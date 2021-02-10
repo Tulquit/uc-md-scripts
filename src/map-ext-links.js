@@ -1,7 +1,12 @@
 (function () {
 	function processExternalLinks() {
 		var externalAnchors = document.querySelectorAll("a:not([href*='escuelacorporativa.com'])");
-		externalAnchors.forEach((anchor) => {
+		var anchorsWithoutHash = Array.from(externalAnchors).filter((link) => {
+			const hrefAttr = link.attributes.getNamedItem("href");
+			if (!hrefAttr || !hrefAttr.value) return false;
+			return !hrefAttr.value.startsWith("#");
+		});
+		anchorsWithoutHash.forEach((anchor) => {
 			anchor.setAttribute("target", "_blank");
 		});
 	}
