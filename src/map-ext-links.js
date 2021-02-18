@@ -9,6 +9,14 @@
 		anchorsWithoutHash.forEach((anchor) => {
 			anchor.setAttribute("target", "_blank");
 		});
+	} 
+
+	function hideUserNotifications() {
+		var userWrapper = document.getElementById("loggedin-user");
+		var userControls = userWrapper.querySelectorAll(".popover-region");
+		userControls.forEach((control) => {
+			control.style.display = "none";
+		});
 	}
 
 	function init() {
@@ -16,6 +24,7 @@
 			return;
 		}
 		processExternalLinks();
+		hideUserNotifications();
 	}
 
 	ready(init);
