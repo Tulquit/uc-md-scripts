@@ -13,6 +13,7 @@
 
 	function hideUserNotifications() {
 		var userWrapper = document.getElementById("loggedin-user");
+		if (!userWrapper) return;
 		var userControls = userWrapper.querySelectorAll(".popover-region");
 		userControls.forEach((control) => {
 			control.style.display = "none";
